@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,700;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./histogram.css">
+    <title>Histogram Generator</title>
+</head>
+<body>
+    <main class="main-container">
+        <header class="header-input">
+            <h1>Histogram Generator</h1>
+            <div class="custom-file-upload">
+                <label for="csv-input" class="custom-file-label">
+                    Choose and Upload File Here
+                    <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                </label>
+                <input type="file" id="csv-input" name="grade" accept=".csv">
+            </div>
+        </header>
+        <section class="stats-container">
+            <article class="stats-header">
+                Stats
+            </article>
+            <article class="stats-box">
+                <article class="stats">
+                    Highest: <span id="highest">0%</span>
+                </article>
+                <article class="stats">
+                    Lowest: <span id="lowest">0%</span>
+                </article>
+                <article class="stats">
+                    Mean: <span id="mean">0%</span>
+                </article>
+                <article class="stats">
+                    Median: <span id="median">0%</span>
+                </article>
+            </article>
+        </section>
+        <section class="flex-container">
+            <section class="lower-bound-container">
+                <article class="lower-bound-header">
+                    Lower bounds
+                    <article id="warning" style="display: none;">Warning: bounds are overlapping!</article>
+                </article>
+                <section class="bounds-level" data-grade="MAX">
+                    <p>MAX</p>
+                    <div class="draggable-bar"></div>
+                    <p>100</p>
+                </section>
+                <section class="bounds-level" data-grade="A+">
+                    <p>A+</p>
+                    <div class="draggable-bar"></div>
+                    <p>95</p>
+                </section>
+                <section class="bounds-level" data-grade="A">
+                    <p>A</p>
+                    <div class="draggable-bar"></div>
+                    <p>90</p>
+                </section>
+                <section class="bounds-level" data-grade="A-">
+                    <p>A-</p>
+                    <div class="draggable-bar"></div>
+                    <p>85</p>
+                </section>
+                <section class="bounds-level" data-grade="B+">
+                    <p>B+</p>
+                    <div class="draggable-bar"></div>
+                    <p>80</p>
+                </section>
+                <section class="bounds-level" data-grade="B">
+                    <p>B</p>
+                    <div class="draggable-bar"></div>
+                    <p>75</p>
+                </section>
+                <section class="bounds-level" data-grade="B-">
+                    <p>B-</p>
+                    <div class="draggable-bar"></div>
+                    <p>70</p>
+                </section>
+                <section class="bounds-level" data-grade="C+">
+                    <p>C+</p>
+                    <div class="draggable-bar"></div>
+                    <p>65</p>
+                </section>
+                <section class="bounds-level" data-grade="C">
+                    <p>C</p>
+                    <div class="draggable-bar"></div>
+                    <p>60</p>
+                </section>
+                <section class="bounds-level" data-grade="C-">
+                    <p>C-</p>
+                    <div class="draggable-bar"></div>
+                    <p>55</p>
+                </section>
+                <section class="bounds-level" data-grade="D">
+                    <p>D</p>
+                    <div class="draggable-bar"></div>
+                    <p>50</p>
+                </section>
+                <section class="bounds-level" data-grade="F">
+                    <p>F</p>
+                    <div class="draggable-bar"></div>
+                    <p>0</p>
+                </section>
+            </section>
+            <section class="histogram-container">
+                <article class="histogram-header">
+                    Histogram
+                    <article id="upload-reminder">Upload a CSV file to see the histogram</article>
+                </article>
+                <section class="bar-container" id="histogram" style="display: none;">
+                    <div id="A+" class="bar" style="--height: 0%">
+                        <span>0</span>
+                    </div>
+                    <div id="A" class="bar" style="--height: 0%">
+                        <span>0</span>
+                    </div>
+                    <div id="A-" class="bar" style="--height: 0%">
+                        <span>0</span>
+                    </div>
+                    <div id="B+" class="bar" style="--height: 0%">
+                        <span>0</span>
+                    </div>
+                    <div id="B" class="bar" style="--height: 0%">
+                        <span>0</span>
+                    </div>
+                    <div id="B-" class="bar" style="--height: 0%">
+                        <span>0</span>
+                    </div>
+                    <div id="C+" class="bar" style="--height: 0%">
+                        <span>0</span>
+                    </div>
+                    <div id="C" class="bar" style="--height: 0%">
+                        <span>0</span>
+                    </div>
+                    <div id="C-" class="bar" style="--height: 0%">
+                        <span>0</span>
+                    </div>
+                    <div id="D" class="bar" style="--height: 0%">
+                        <span>0</span>
+                    </div>
+                    <div id="F" class="bar" style="--height: 0%">
+                        <span>0</span>
+                    </div>
+                    <div class="label-container">
+                        <div class="label">A+</div>
+                        <div class="label">A</div>
+                        <div class="label">A-</div>
+                        <div class="label">B+</div>
+                        <div class="label">B</div>
+                        <div class="label">B-</div>
+                        <div class="label">C+</div>
+                        <div class="label">C</div>
+                        <div class="label">C-</div>
+                        <div class="label">D</div>
+                        <div class="label">F</div>
+                    </div>
+                </section>
+            </section>
+        </section>
+    </main>
+    <script type="text/javascript" src="./calculate.js"></script>
+</body>
+</html>

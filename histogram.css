@@ -1,0 +1,238 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto Mono', monospace, sans-serif;
+    background-color: #A6192E;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    margin: 1em 3em;
+    padding: 2em 2em;
+    height: 100vh;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.main-container h1 {
+    font-weight: 700;
+    margin: 0;
+}
+
+.header-input {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+    padding: 0 20px;
+}
+
+.custom-file-upload {
+    position: relative;
+}
+
+.custom-file-upload > input {
+    display: none;
+}
+
+.custom-file-label {
+    border: 1px solid #585958;
+    border-radius: 10px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.4s ease-out;
+}
+
+.custom-file-label:hover {
+    background-color: #585958;
+    color: #e0e0df;
+}
+
+.stats-container {
+    background-color: #e9eff1;
+    flex-basis: 15%;
+    margin: 30px 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.stats-header,
+.lower-bound-header,
+.histogram-header {
+    font-size: 20px;
+    font-weight: 400;
+    color: #CC0633;
+}
+
+.lower-bound-header {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 40px;
+}
+
+#warning {
+    color: #54585A;
+    font-size: 12px;
+}
+
+.stats-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.stats-box article {
+    border: 1px solid #585958;
+    border-radius: 7px;
+    height: 60px;
+    flex: 1;
+    padding: 5px 15px;
+}
+
+.stats {
+    display: flex;
+    flex-direction: row;
+}
+
+.stats span {
+    margin: 0 auto;
+    font-size: 20px;
+    font-weight: 500;
+    font-style: italic;
+    align-self: center;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-grow: 1;
+    gap: 30px;
+}
+
+.lower-bound-container {
+    flex-basis: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.histogram-container {
+    flex-basis: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.histogram-header {
+    display: flex;
+    flex-direction: column;
+    gap: 130px;
+}
+
+#upload-reminder {
+    margin: 0 auto;
+    color: black;
+}
+
+.lower-bound-container,
+.histogram-container {
+    background-color: #e9eff1;
+    padding: 20px 20px 30px;
+}
+
+.bounds-level {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.bounds-level p {
+    /* flex-shrink: 0; */
+    width: 40px;
+    margin: 0;
+}
+
+.draggable-bar {
+    /* flex-grow: 1; */
+    width: 350px;
+    height: 13px;
+    background-color: #757474;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: background-color 0.4s ease;
+}
+
+.draggable-bar:hover {
+    background-color: #A6192E;
+}
+
+.bar-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    height: 300px;
+    padding: 20px;
+    position: relative;
+}
+
+.bar {
+    width: 35px;
+    bottom: 10px;
+    height: var(--height);
+    background-color: #A6192E;
+    transition: height 1s ease;
+    position: relative;
+}
+
+.bar span {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+}
+
+.label-container {
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    padding: 0 20px;
+    width: 100%;
+    bottom: 0;
+}
+
+.label {
+    text-align: center;
+}
+
+/* Animation */
+@keyframes grow {
+    from {
+        height: 0;
+    }
+    to {
+        height: var(--height);
+    }
+}
+
+.bar {
+    animation: grow 1s ease;
+}
+

@@ -1,0 +1,5 @@
+Technical Considerations:
+1. The warning message is dynamically displayed and removed based on the existence or absence of slider overlap, providing real-time feedback to the user.
+2. The "MAX" boundary is excluded from the overlap check as it serves as the upper limit for grades.
+3. The slider bounds are pre-defined from 0 - 100 for the purpose of styling design.
+
